@@ -1,0 +1,31 @@
+{
+  "name": "issue-notes",
+  "version": "1.0.0",
+  "description": "I keep notes for a lot of Jira stories that I work on, and I typically use notepads.  So I'm wondering if I can make an interface with drag and drop that emulates that experience but makes storing and sync data between computers better.  Also is Trello what I'm looking for?",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "react": "16.12.0",
+    "react-beautiful-dnd": "13.0.0",
+    "react-dom": "16.12.0",
+    "react-scripts": "3.0.1",
+    "uuid": "8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "3.8.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

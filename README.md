@@ -1,2 +1,0 @@
-# devnotes
-Created with CodeSandbox
