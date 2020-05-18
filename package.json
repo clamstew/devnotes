@@ -1,7 +1,7 @@
 {
   "name": "dev-notes",
   "version": "1.0.0",
-  "description": "",
+  "description": "I keep notes for a lot of Jira stories that I work on, and I typically use notepads.  So I'm wondering if I can make an interface with drag and drop that emulates that experience but makes storing and sync data between computers better.  Also is Trello what I'm looking for?",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
