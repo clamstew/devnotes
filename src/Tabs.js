@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const TabsWrapper = styled.div({
   float: "left",
@@ -41,6 +42,12 @@ const AddNewIssueButton = styled.div({
   }
 });
 
+const CloseIconStyled = styled(IoMdCloseCircleOutline)({
+  marginLeft: 5,
+  marginTop: 2,
+  cursor: "pointer"
+});
+
 function IssueTab(props) {
   return (
     <IssueTabWrapper
@@ -48,6 +55,7 @@ function IssueTab(props) {
       onClick={() => props.setActiveIssueId(props.issueTabData.id)}
     >
       {props.issueTabData.title}
+      <CloseIconStyled />
     </IssueTabWrapper>
   );
 }
