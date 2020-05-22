@@ -22,7 +22,7 @@ export function Header() {
         <span role="img" aria-label="notepad">
           📝
         </span>{" "}
-        &lt;Dev.Notes /&gt;
+        &lt;Notes.Build /&gt;
       </Title>
       <Subtitle>
         [ Collect and standardize build notes for dev issues ]
