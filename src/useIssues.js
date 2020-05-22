@@ -58,6 +58,10 @@ export function reducer(state, action) {
     case "UPDATE_ISSUE_TITLE":
       return [...state];
 
+    case "REMOVE_ISSUE":
+      console.log("REMOVE_ISSUE", state, action);
+      return [...state];
+
     default:
       throw new Error();
   }

@@ -49,13 +49,28 @@ const CloseIconStyled = styled(IoMdCloseCircleOutline)({
 });
 
 function IssueTab(props) {
+  const [, dispatch] = useIssues();
+
+  function closeTab(evt) {
+    // console.log("running close tab!");
+    evt.preventDefault();
+    evt.stopPropagation();
+    dispatch({
+      type: "REMOVE_ISSUE",
+      payload: { activeIssueId: props.activeIssueId }
+    });
+    // show warning that this is a destructive action
+    // run reducer action to remove all of that tab and
+    // it's data
+  }
+
   return (
     <IssueTabWrapper
       isActive={props.issueTabData.id === props.activeIssueId}
       onClick={() => props.setActiveIssueId(props.issueTabData.id)}
     >
       {props.issueTabData.title}
-      <CloseIconStyled />
+      <CloseIconStyled onClick={closeTab} />
     </IssueTabWrapper>
   );
 }
