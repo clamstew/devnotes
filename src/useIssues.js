@@ -57,7 +57,10 @@ export function reducer(state, action) {
       return sortBy([...otherIssues, issue], "order");
 
     case "UPDATE_ISSUE_TITLE":
-      return [...state];
+      issue = getIssueById(state, action.payload.issueId);
+      issue.title = action.payload.title;
+      otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
+      return sortBy([...otherIssues, issue], "order");
 
     case "UPDATE_ISSUE_DESCRIPTION":
       issue = getIssueById(state, action.payload.issueId);

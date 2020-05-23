@@ -23,14 +23,15 @@ const MainWrapper = styled.div({
   margin: "0px 10px"
 });
 
-// const TitleInput = styled.textarea({
-//   background: "#2d2d2d",
-//   resize: "none",
-//   color: "white",
-//   border: "none",
-//   width: "100%",
-//   fontSize: 18
-// });
+const TitleInput = styled.input({
+  background: "#2d2d2d",
+  resize: "none",
+  color: "white",
+  border: "none",
+  width: "100%",
+  fontSize: 28,
+  fontWeight: 800
+});
 
 const DescriptionInput = styled.textarea({
   background: "#2d2d2d",
@@ -61,9 +62,28 @@ export function ListOfLists(props) {
     });
   }
 
+  function onChangeTitle(evt) {
+    dispatch({
+      type: "UPDATE_ISSUE_TITLE",
+      payload: {
+        title: evt.currentTarget.value,
+        issueId: props.activeIssueId
+      }
+    });
+  }
+
   return (
     <MainWrapper>
-      <h2>{activeIssue.title}</h2>
+      {(activeIssue.title || activeIssue.title === "") && (
+        <h2>
+          <TitleInput
+            type="text"
+            value={activeIssue.title}
+            onChange={onChangeTitle}
+          />
+        </h2>
+      )}
+
       {(activeIssue.summary || activeIssue.summary === "") && (
         <h4>
           <DescriptionInput
