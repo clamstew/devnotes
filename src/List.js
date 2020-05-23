@@ -23,6 +23,15 @@ const MainWrapper = styled.div({
   margin: "0px 10px"
 });
 
+// const TitleInput = styled.textarea({
+//   background: "#2d2d2d",
+//   resize: "none",
+//   color: "white",
+//   border: "none",
+//   width: "100%",
+//   fontSize: 18
+// });
+
 const DescriptionInput = styled.textarea({
   background: "#2d2d2d",
   resize: "none",

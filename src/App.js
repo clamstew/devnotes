@@ -13,6 +13,10 @@ const AppWrapper = styled.div({
   margin: "0 auto"
 });
 
+const BodyWrapper = styled.div({
+  marginTop: 80
+});
+
 export default function App() {
   const [activeIssueId, setActiveIssueId] = useState(activeIssues[0].id);
 
@@ -20,18 +24,20 @@ export default function App() {
     <AppWrapper>
       <Header />
 
-      <IssueTabs
-        activeIssueId={activeIssueId}
-        setActiveIssueId={setActiveIssueId}
-      />
+      <BodyWrapper>
+        <IssueTabs
+          activeIssueId={activeIssueId}
+          setActiveIssueId={setActiveIssueId}
+        />
 
-      <br clear="all" />
+        <br clear="all" />
 
-      <ListOfLists activeIssueId={activeIssueId} />
+        <ListOfLists activeIssueId={activeIssueId} />
 
-      <br clear="all" />
+        <br clear="all" />
 
-      <QuickAddListSections activeIssueId={activeIssueId} />
+        <QuickAddListSections activeIssueId={activeIssueId} />
+      </BodyWrapper>
     </AppWrapper>
   );
 }
