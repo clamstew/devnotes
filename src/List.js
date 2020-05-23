@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
 
@@ -33,9 +33,8 @@ const DescriptionInput = styled.textarea({
 });
 
 export function ListOfLists(props) {
-  const [issues] = useIssues();
+  const [issues, dispatch] = useIssues();
   const activeIssue = issues.find(issue => issue.id === props.activeIssueId);
-  const [description, setDescription] = useState(activeIssue.summary);
 
   const totalAmountOfGroups = activeIssue?.groups?.length;
   const skipShowingFinalDividingLine = idx =>
@@ -44,8 +43,13 @@ export function ListOfLists(props) {
   if (!activeIssue) return null;
 
   function onChangeDescription(evt) {
-    console.log("on change description", evt.currentTarget.value);
-    setDescription(evt.currentTarget.value);
+    dispatch({
+      type: "UPDATE_ISSUE_DESCRIPTION",
+      payload: {
+        description: evt.currentTarget.value,
+        issueId: props.activeIssueId
+      }
+    });
   }
 
   return (
@@ -55,7 +59,7 @@ export function ListOfLists(props) {
         <h4>
           <DescriptionInput
             type="text"
-            value={description}
+            value={activeIssue.summary}
             onChange={onChangeDescription}
           />
         </h4>

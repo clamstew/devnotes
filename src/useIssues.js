@@ -32,7 +32,7 @@ export function reducer(state, action) {
     case "ADD_SECTION":
       console.log("ADD_SECTION", action);
       console.log("state", state);
-      const issue = getIssueById(state, action.payload.issueId);
+      let issue = getIssueById(state, action.payload.issueId);
       console.log("issue", issue);
       if (
         issue &&
@@ -50,13 +50,17 @@ export function reducer(state, action) {
         ...issue.groups,
         { title: action.payload.title, icon: action.payload.icon, items: [] }
       ];
-      const otherIssues = state.filter(
-        iss => iss.id !== action.payload.issueId
-      );
+      let otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
       return [...otherIssues, issue];
 
     case "UPDATE_ISSUE_TITLE":
       return [...state];
+
+    case "UPDATE_ISSUE_DESCRIPTION":
+      issue = getIssueById(state, action.payload.issueId);
+      issue.summary = action.payload.description;
+      otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
+      return [...otherIssues, issue];
 
     case "REMOVE_ISSUE":
       console.log("REMOVE_ISSUE", state, action);
