@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { BsTrashFill } from "react-icons/bs";
 
 const HeaderWrapper = styled.div({
   position: "absolute",
@@ -28,7 +29,15 @@ const Subtitle = styled.h4({
   float: "right"
 });
 
+const BurnDownAllTheDataIcon = styled(BsTrashFill)({
+  cursor: "pointer"
+});
+
 export function Header() {
+  function launchConfirmRemoveDataModal() {
+    console.log("launch modal... to confirm destructive action here..");
+  }
+
   return (
     <HeaderWrapper>
       <Title>
@@ -37,7 +46,10 @@ export function Header() {
         </span>{" "}
         Notes.Build
       </Title>
-      <Subtitle>markdown build notes for dev issues</Subtitle>
+      <Subtitle>
+        markdown build notes for dev issues{" "}
+        <BurnDownAllTheDataIcon onClick={launchConfirmRemoveDataModal} />
+      </Subtitle>
     </HeaderWrapper>
   );
 }
