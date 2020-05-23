@@ -37,7 +37,7 @@ export function Header() {
         </span>{" "}
         Notes.Build
       </Title>
-      <Subtitle>Collect markdown build notes for dev issues</Subtitle>
+      <Subtitle>markdown build notes for dev issues</Subtitle>
     </HeaderWrapper>
   );
 }

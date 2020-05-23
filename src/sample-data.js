@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const activeIssues = [
   {
-    id: "123",
+    id: uuidv4(),
     title: "CLA-123",
     order: 0,
     summary: "This is the issue about making the header blue",
@@ -9,7 +11,7 @@ export const activeIssues = [
         title: "Do Next",
         icon: "🔴",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -17,7 +19,7 @@ export const activeIssues = [
         title: "ToDo",
         icon: "🔴",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -25,7 +27,7 @@ export const activeIssues = [
         title: "Clean up",
         icon: "⚠️",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -33,7 +35,7 @@ export const activeIssues = [
         title: "Design Review Items",
         icon: "⚠️",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -41,7 +43,7 @@ export const activeIssues = [
         title: "Done",
         icon: "✅",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -49,7 +51,7 @@ export const activeIssues = [
         title: "TO PUT on the Pull Request",
         icon: "🔴",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -57,7 +59,7 @@ export const activeIssues = [
         title: "Have PUT on the Pull Request",
         icon: "✅",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -65,7 +67,7 @@ export const activeIssues = [
         title: "Future ideas (within the domain of this issue)",
         icon: "💡",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -73,7 +75,7 @@ export const activeIssues = [
         title: "Related Notes",
         icon: "💡",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       },
@@ -81,14 +83,14 @@ export const activeIssues = [
         title: "Unrelated Notes",
         icon: "💡",
         items: [
-          { id: "abc", title: "get an answer about amp event" },
+          { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }
         ]
       }
     ]
   },
   {
-    id: "456",
+    id: uuidv4(),
     title: "CLA-456",
     order: 1,
     summary: "This is the issue about making the header red again.",
