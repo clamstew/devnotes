@@ -1,6 +1,7 @@
 import React, { useReducer, useContext } from "react";
 import { activeIssues } from "./sample-data";
 import { v4 as uuidv4 } from "uuid";
+import sortBy from "lodash/sortBy";
 
 /*
  * [clamstew/issuenotes](https://github.com/clamstew/issuenotes)
@@ -21,13 +22,15 @@ export function reducer(state, action) {
   switch (action.type) {
     case "ADD_ISSUE":
       console.log("ADD_ISSUE", action);
+      const lastIssueOrderNumber = state[state.length - 1].order;
       const newIssue = {
         id: uuidv4(),
         title: "New Issue",
+        order: lastIssueOrderNumber + 1,
         summary: "Add some details about the issue ...",
         groups: []
       };
-      return [...state, newIssue];
+      return sortBy([...state, newIssue], "order");
 
     case "ADD_SECTION":
       console.log("ADD_SECTION", action);
@@ -51,7 +54,7 @@ export function reducer(state, action) {
         { title: action.payload.title, icon: action.payload.icon, items: [] }
       ];
       let otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
-      return [...otherIssues, issue];
+      return sortBy([...otherIssues, issue], "order");
 
     case "UPDATE_ISSUE_TITLE":
       return [...state];
@@ -60,7 +63,7 @@ export function reducer(state, action) {
       issue = getIssueById(state, action.payload.issueId);
       issue.summary = action.payload.description;
       otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
-      return [...otherIssues, issue];
+      return sortBy([...otherIssues, issue], "order");
 
     case "REMOVE_ISSUE":
       console.log("REMOVE_ISSUE", state, action);

@@ -2,6 +2,7 @@ export const activeIssues = [
   {
     id: "123",
     title: "CLA-123",
+    order: 0,
     summary: "This is the issue about making the header blue",
     groups: [
       {
@@ -89,6 +90,7 @@ export const activeIssues = [
   {
     id: "456",
     title: "CLA-456",
+    order: 1,
     summary: "This is the issue about making the header red again.",
     groups: []
   }

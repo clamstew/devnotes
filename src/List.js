@@ -55,7 +55,7 @@ export function ListOfLists(props) {
   return (
     <MainWrapper>
       <h2>{activeIssue.title}</h2>
-      {activeIssue.summary && (
+      {(activeIssue.summary || activeIssue.summary === "") && (
         <h4>
           <DescriptionInput
             type="text"
