@@ -10,6 +10,7 @@ export const activeIssues = [
       {
         title: "Do Next",
         icon: "🔴",
+        description: "## Editable markdow \n**Yay!**",
         items: [
           { id: "abc", title: "get an answer about analytics event" },
           { id: "def", title: "which PR do we release first" }

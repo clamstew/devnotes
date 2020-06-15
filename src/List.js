@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
+import { EditableMarkdownArea } from "./EditableMarkdownArea";
 
 const EmptyList = () => {
   return (
@@ -100,13 +101,14 @@ export function ListOfLists(props) {
             <h3 style={{ userSelect: "none" }}>
               {group.icon} [{group.title}]
             </h3>
-            {group.items.length > 0 && (
+            <EditableMarkdownArea markdown={group.description} />
+            {/* {group.items.length > 0 && (
               <ul>
                 {group.items.map((item, jdx) => (
                   <li key={jdx}>{item.title}</li>
                 ))}
               </ul>
-            )}
+            )} */}
             {group.items.length === 0 && <EmptyList />}
             {skipShowingFinalDividingLine(idx) || <hr />}
           </React.Fragment>
