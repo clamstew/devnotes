@@ -15,6 +15,12 @@ const EditModeTextArea = styled(TextareaAutosize)({
   fontSize: 18
 });
 
+const MarkdownViewerWrapper = styled.div({
+  "& a": {
+    color: "darkgrey"
+  }
+});
+
 const NoContentPrompt = styled.div({
   backgroundColor: "grey",
   paddingTop: 6,
@@ -22,7 +28,9 @@ const NoContentPrompt = styled.div({
   borderRadius: 3,
   color: "black",
   textAlign: "center",
-  cursor: "pointer"
+  cursor: "pointer",
+  fontWeight: "bold",
+  fontSize: 12
 });
 
 export const EditableMarkdownArea = props => {
@@ -41,20 +49,20 @@ export const EditableMarkdownArea = props => {
           setViewMarkdown(false);
         }}
       >
-        Click to add text.
+        Click to add text
       </NoContentPrompt>
     );
   }
 
   if (viewMarkdownMode) {
     return (
-      <div
+      <MarkdownViewerWrapper
         onClick={() => {
           setViewMarkdown(false);
         }}
       >
         <ReactMarkdown source={markdown} />
-      </div>
+      </MarkdownViewerWrapper>
     );
   }
 
