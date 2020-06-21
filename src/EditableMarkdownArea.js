@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useComponentVisible } from "./useComponentVisible";
 import ReactMarkdown from "react-markdown";
 import styled from "@emotion/styled";
+import TextareaAutosize from "react-autosize-textarea";
 
-const EditModeTextArea = styled.textarea({
+const EditModeTextArea = styled(TextareaAutosize)({
   background: "#2d2d2d",
   color: "white",
   resize: "none",
