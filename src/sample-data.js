@@ -10,83 +10,43 @@ export const activeIssues = [
       {
         title: "Do Next",
         icon: "🔴",
-        description: "## Editable markdow \n**Yay!**",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        description: "## Editable markdow \n**Yay!**"
       },
       {
         title: "ToDo",
-        icon: "🔴",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "🔴"
       },
       {
         title: "Clean up",
-        icon: "⚠️",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "⚠️"
       },
       {
         title: "Design Review Items",
-        icon: "⚠️",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "⚠️"
       },
       {
         title: "Done",
-        icon: "✅",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "✅"
       },
       {
         title: "TO PUT on the Pull Request",
-        icon: "🔴",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "🔴"
       },
       {
         title: "Have PUT on the Pull Request",
-        icon: "✅",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "✅"
       },
       {
         title: "Future ideas (within the domain of this issue)",
-        icon: "💡",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "💡"
       },
       {
         title: "Related Notes",
-        icon: "💡",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "💡"
       },
       {
         title: "Unrelated Notes",
-        icon: "💡",
-        items: [
-          { id: "abc", title: "get an answer about analytics event" },
-          { id: "def", title: "which PR do we release first" }
-        ]
+        icon: "💡"
       }
     ]
   },

@@ -3,18 +3,18 @@ import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
 import { EditableMarkdownArea } from "./EditableMarkdownArea";
 
-const EmptyList = () => {
-  return (
-    <div
-      style={{
-        height: 30,
-        background: "grey",
-        borderRadius: 6,
-        cursor: "pointer"
-      }}
-    />
-  );
-};
+// const EmptyList = () => {
+//   return (
+//     <div
+//       style={{
+//         height: 30,
+//         background: "grey",
+//         borderRadius: 6,
+//         cursor: "pointer"
+//       }}
+//     />
+//   );
+// };
 
 const MainWrapper = styled.div({
   textAlign: "left",
@@ -102,14 +102,6 @@ export function ListOfLists(props) {
               {group.icon} [{group.title}]
             </h3>
             <EditableMarkdownArea markdown={group.description} />
-            {/* {group.items.length > 0 && (
-              <ul>
-                {group.items.map((item, jdx) => (
-                  <li key={jdx}>{item.title}</li>
-                ))}
-              </ul>
-            )} */}
-            {group.items.length === 0 && <EmptyList />}
             {skipShowingFinalDividingLine(idx) || <hr />}
           </React.Fragment>
         );
