@@ -14,15 +14,50 @@ const EditModeTextArea = styled.textarea({
   fontSize: 18
 });
 
+const NoContentPrompt = styled.div({
+  backgroundColor: "grey",
+  paddingTop: 6,
+  paddingBottom: 6,
+  borderRadius: 3,
+  color: "black",
+  textAlign: "center",
+  cursor: "pointer"
+});
+
 export const EditableMarkdownArea = props => {
   const {
     ref,
-    isComponentVisible: editMode,
-    setIsComponentVisible: setEditMode
+    isComponentVisible: viewMarkdownMode,
+    // NOTE: opposite of View Markdown mode is "edit mode"
+    setIsComponentVisible: setViewMarkdown
   } = useComponentVisible(true);
   const [markdown, setMarkdownValue] = useState(props.markdown);
 
-  return editMode ? (
+  if (viewMarkdownMode && markdown === undefined) {
+    return (
+      <NoContentPrompt
+        onClick={() => {
+          setViewMarkdown(false);
+        }}
+      >
+        Click to add text.
+      </NoContentPrompt>
+    );
+  }
+
+  if (viewMarkdownMode) {
+    return (
+      <div
+        onClick={() => {
+          setViewMarkdown(false);
+        }}
+      >
+        <ReactMarkdown source={markdown} />
+      </div>
+    );
+  }
+
+  return (
     <div ref={ref}>
       <EditModeTextArea
         value={markdown}
@@ -30,17 +65,9 @@ export const EditableMarkdownArea = props => {
           return setMarkdownValue(e.target.value);
         }}
         onBlur={e => {
-          return setEditMode(false);
+          return setViewMarkdown(true);
         }}
       />
-    </div>
-  ) : (
-    <div
-      onClick={() => {
-        setEditMode(true);
-      }}
-    >
-      <ReactMarkdown source={markdown} />
     </div>
   );
 };
