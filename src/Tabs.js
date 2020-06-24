@@ -89,7 +89,13 @@ export function IssueTabs(props) {
         />
       ))}
 
-      <AddNewIssueButton onClick={() => dispatch({ type: "ADD_ISSUE" })}>
+      <AddNewIssueButton
+        onClick={() => {
+          dispatch({ type: "ADD_ISSUE" });
+          // need to set issue created here as active somehow
+          // maybe it highlights the nced to centralize more data in the reducer??
+        }}
+      >
         +
       </AddNewIssueButton>
     </TabsWrapper>
