@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Global, css } from "@emotion/core";
 import { IssueDataProvider } from "./useIssues";
+import { ModalProvider } from "./useModals";
 import App from "./App";
 
 const rootElement = document.getElementById("root");
@@ -17,7 +18,9 @@ ReactDOM.render(
       `}
     />
     <IssueDataProvider>
-      <App />
+      <ModalProvider>
+        <App />
+      </ModalProvider>
     </IssueDataProvider>
   </React.StrictMode>,
   rootElement

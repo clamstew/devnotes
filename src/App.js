@@ -5,6 +5,7 @@ import { IssueTabs } from "./Tabs";
 import { ListOfLists } from "./List";
 import { Header } from "./Header";
 import { QuickAddListSections } from "./QuickAddSections";
+import { Modal } from "./Modal";
 
 const AppWrapper = styled.div({
   fontFamily: "sans-serif",
@@ -22,6 +23,7 @@ export default function App() {
 
   return (
     <AppWrapper>
+      <Modal />
       <Header />
 
       <BodyWrapper>

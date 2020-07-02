@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useComponentVisible } from "./useComponentVisible";
+import { useComponentVisible } from "./hooks/useComponentVisible";
 import ReactMarkdown from "react-markdown";
 import styled from "@emotion/styled";
 import TextareaAutosize from "react-autosize-textarea";
