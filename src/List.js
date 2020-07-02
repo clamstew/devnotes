@@ -2,19 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
 import { EditableMarkdownArea } from "./EditableMarkdownArea";
-
-// const EmptyList = () => {
-//   return (
-//     <div
-//       style={{
-//         height: 30,
-//         background: "grey",
-//         borderRadius: 6,
-//         cursor: "pointer"
-//       }}
-//     />
-//   );
-// };
+import TextareaAutosize from "react-autosize-textarea";
 
 const MainWrapper = styled.div({
   textAlign: "left",
@@ -34,12 +22,13 @@ const TitleInput = styled.input({
   fontWeight: 800
 });
 
-const DescriptionInput = styled.textarea({
+const DescriptionInput = styled(TextareaAutosize)({
   background: "#2d2d2d",
   resize: "none",
   color: "white",
   border: "none",
   width: "100%",
+  fontFamily: "sans-serif",
   fontSize: 18
 });
 
@@ -79,6 +68,7 @@ export function ListOfLists(props) {
         <h2>
           <TitleInput
             type="text"
+            placeholder="Add a title ..."
             value={activeIssue.title}
             onChange={onChangeTitle}
           />
@@ -89,6 +79,7 @@ export function ListOfLists(props) {
         <h4>
           <DescriptionInput
             type="text"
+            placeholder="Add a description ..."
             value={activeIssue.summary}
             onChange={onChangeDescription}
           />
