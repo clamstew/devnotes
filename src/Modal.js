@@ -37,9 +37,13 @@ const ModalWrapper = styled.div({
 });
 
 export const Modal = () => {
-  const [modals] = useModals();
+  const [modals, dispatch] = useModals();
 
   if (!modals.showRemoveDataModal) return null;
+
+  function burnItDown() {
+    dispatch({ type: "HIDE_REMOVE_DATA_MODAL" });
+  }
 
   return (
     <ModalBackground showBackdrop={true}>
@@ -55,7 +59,7 @@ export const Modal = () => {
 
             <p>If you'd like to delete it, and skip town, click below:</p>
 
-            <button>Burn it down</button>
+            <button onClick={burnItDown}>Burn it down</button>
           </ModalWrapper>
         )}
       </GenericPortal>

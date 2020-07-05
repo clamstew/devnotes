@@ -6,9 +6,12 @@ export const initialState = {
 
 export function reducer(state, action) {
   switch (action.type) {
+    // console.log("modal reducer", state, action);
     case "SHOW_REMOVE_DATA_MODAL":
-      console.log("SHOW_REMOVE_DATA_MODAL", state, action);
       return { ...state, showRemoveDataModal: true };
+
+    case "HIDE_REMOVE_DATA_MODAL":
+      return { ...state, showRemoveDataModal: false };
 
     default:
       throw new Error(
