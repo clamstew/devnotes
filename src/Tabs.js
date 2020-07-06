@@ -51,6 +51,11 @@ const CloseIconStyled = styled(IoMdCloseCircleOutline)({
 function IssueTab(props) {
   const [, dispatch] = useIssues();
 
+  var length = 16;
+  var title = props.issueTabData.title;
+  var myTruncatedTitle = title.substring(0, length);
+  const useEllipses = title.length > myTruncatedTitle.length;
+
   function closeTab(evt) {
     // console.log("running close tab!");
     evt.preventDefault();
@@ -69,7 +74,8 @@ function IssueTab(props) {
       isActive={props.issueTabData.id === props.activeIssueId}
       onClick={() => props.setActiveIssueId(props.issueTabData.id)}
     >
-      {props.issueTabData.title}
+      {`${myTruncatedTitle}${useEllipses ? " ..." : ""}`}
+      {myTruncatedTitle === "" ? "¯\\_(ツ)_/¯" : null}
       <CloseIconStyled onClick={closeTab} />
     </IssueTabWrapper>
   );
