@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { GenericPortal } from "./portal";
 import { useModals } from "./useModals";
+import { Button } from "./Button";
 
 const ModalBackground = styled.div(props => {
   const styles = {
@@ -26,7 +27,7 @@ const ModalWrapper = styled.div({
   background: "black",
   opacity: 1,
   color: "white",
-  height: 200,
+  height: 250,
   position: "absolute",
   top: 200,
   left: 200,
@@ -59,7 +60,7 @@ export const Modal = () => {
 
             <p>If you'd like to delete it, and skip town, click below:</p>
 
-            <button onClick={burnItDown}>Burn it down</button>
+            <Button text={"Burn it down"} onClick={burnItDown} />
           </ModalWrapper>
         )}
       </GenericPortal>
