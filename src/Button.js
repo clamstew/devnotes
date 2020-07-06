@@ -45,7 +45,7 @@ export const Button = props => {
 };
 
 Button.propTypes = {
-  type: PropTypes.type,
+  type: PropTypes.string,
   onClick: PropTypes.func,
   text: PropTypes.string
 };
