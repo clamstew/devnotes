@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useIssues } from "./useIssues";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { useHover } from "./hooks/useHover";
 
 const TabsWrapper = styled.div({
   float: "left",
@@ -45,11 +46,13 @@ const AddNewIssueButton = styled.div({
 const CloseIconStyled = styled(IoMdCloseCircleOutline)({
   marginLeft: 5,
   marginTop: 2,
+  display: "inline-block",
   cursor: "pointer"
 });
 
 function IssueTab(props) {
   const [, dispatch] = useIssues();
+  const [hoverRef, isHovered] = useHover();
 
   var length = 16;
   var title = props.issueTabData.title;
@@ -67,16 +70,31 @@ function IssueTab(props) {
     // show warning that this is a destructive action
     // run reducer action to remove all of that tab and
     // it's data
+    return false;
   }
 
   return (
     <IssueTabWrapper
+      ref={hoverRef}
       isActive={props.issueTabData.id === props.activeIssueId}
       onClick={() => props.setActiveIssueId(props.issueTabData.id)}
     >
       {`${myTruncatedTitle}${useEllipses ? " ..." : ""}`}
       {myTruncatedTitle === "" ? "¯\\_(ツ)_/¯" : null}
-      <CloseIconStyled onClick={closeTab} />
+      {isHovered ? (
+        <CloseIconStyled onClick={closeTab} />
+      ) : (
+        <div
+          style={{
+            display: "inline-block",
+            width: 14,
+            height: 14,
+            marginLeft: 5,
+            marginTop: 2,
+            background: "none"
+          }}
+        />
+      )}
     </IssueTabWrapper>
   );
 }
