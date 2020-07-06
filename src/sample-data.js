@@ -10,7 +10,7 @@ export const activeIssues = [
       {
         title: "Do Next",
         icon: "🔴",
-        description: "## Editable markdow \n**Yay!**"
+        description: "## Editable markdown \n**Yay!**"
       },
       {
         title: "ToDo",
