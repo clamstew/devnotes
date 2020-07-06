@@ -51,7 +51,12 @@ export const Modal = () => {
       <GenericPortal>
         {modals.showRemoveDataModal && (
           <ModalWrapper>
-            <h1>Self-Destruct</h1>
+            <h1>
+              <span role="img" aria-label="fire">
+                🔥
+              </span>{" "}
+              Self-Destruct
+            </h1>
 
             <p>
               No need for GDPR laws here. We don't have any of your data. You
