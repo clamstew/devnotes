@@ -10,19 +10,26 @@ import sortBy from "lodash/sortBy";
  * [Context – React](https://reactjs.org/docs/context.html)
  */
 
-export const initialState = activeIssues;
+export const initialState = {
+  issues: activeIssues,
+  activeIssueId: activeIssues[0].id // will need to set to non-sample data eventually
+};
 
 // I imagine this will turn into a "selectors" section like redux
 // "functions" capable of finding parts of the sub-state
-const getIssueById = (state, issueId) => {
-  return state.find(issue => issue.id === issueId);
+const getIssueById = (issues, issueId) => {
+  return issues.find(issue => issue.id === issueId);
 };
 
 export function reducer(state, action) {
   switch (action.type) {
+    case "SET_ACTIVE_ISSUE":
+      return { ...state, activeIssueId: action.payload.activeIssueId };
+
     case "ADD_ISSUE":
       console.log("ADD_ISSUE", action);
-      const lastIssueOrderNumber = state[state.length - 1].order;
+      const lastIssueOrderNumber =
+        state?.issues?.[state.issues.length - 1]?.order;
       const newIssue = {
         id: uuidv4(),
         title: "New Issue",
@@ -30,12 +37,16 @@ export function reducer(state, action) {
         summary: "Add some details about the issue ...",
         groups: []
       };
-      return sortBy([...state, newIssue], "order");
+      return {
+        ...state,
+        activeIssueId: newIssue.id,
+        issues: sortBy([...state.issues, newIssue], "order")
+      };
 
     case "ADD_SECTION":
       console.log("ADD_SECTION", action);
-      console.log("state", state);
-      let issue = getIssueById(state, action.payload.issueId);
+      console.log("state.issues", state.issues);
+      let issue = getIssueById(state.issues, action.payload.issueId);
       console.log("issue", issue);
       if (
         issue &&
@@ -53,24 +64,43 @@ export function reducer(state, action) {
         ...issue.groups,
         { title: action.payload.title, icon: action.payload.icon, items: [] }
       ];
-      let otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
-      return sortBy([...otherIssues, issue], "order");
+      let otherIssues = state.issues.filter(
+        iss => iss.id !== action.payload.issueId
+      );
+      return {
+        ...state,
+        issues: sortBy([...otherIssues, issue], "order")
+      };
 
     case "UPDATE_ISSUE_TITLE":
-      issue = getIssueById(state, action.payload.issueId);
+      issue = getIssueById(state.issues, action.payload.issueId);
       issue.title = action.payload.title;
-      otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
-      return sortBy([...otherIssues, issue], "order");
+      otherIssues = state.issues.filter(
+        iss => iss.id !== action.payload.issueId
+      );
+      return {
+        ...state,
+        issues: sortBy([...otherIssues, issue], "order")
+      };
 
     case "UPDATE_ISSUE_DESCRIPTION":
-      issue = getIssueById(state, action.payload.issueId);
+      issue = getIssueById(state.issues, action.payload.issueId);
       issue.summary = action.payload.description;
-      otherIssues = state.filter(iss => iss.id !== action.payload.issueId);
-      return sortBy([...otherIssues, issue], "order");
+      otherIssues = state.issues.filter(
+        iss => iss.id !== action.payload.issueId
+      );
+      return {
+        ...state,
+        issues: sortBy([...otherIssues, issue], "order")
+      };
 
     case "REMOVE_ISSUE":
       console.log("REMOVE_ISSUE", state, action);
-      return [...state];
+      return {
+        ...state,
+        // @TODO - this doesn't do anything yet ...
+        issues: sortBy([...state.issues], "order")
+      };
 
     default:
       throw new Error();

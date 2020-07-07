@@ -32,9 +32,12 @@ const DescriptionInput = styled(TextareaAutosize)({
   fontSize: 18
 });
 
-export function ListOfLists(props) {
-  const [issues, dispatch] = useIssues();
-  const activeIssue = issues.find(issue => issue.id === props.activeIssueId);
+export function ListOfLists() {
+  const [issuesState, dispatch] = useIssues();
+  const activeIssueId = issuesState?.activeIssueId;
+  const activeIssue = issuesState?.issues?.find(
+    issue => issue.id === activeIssueId
+  );
 
   const totalAmountOfGroups = activeIssue?.groups?.length;
   const skipShowingFinalDividingLine = idx =>
@@ -47,7 +50,7 @@ export function ListOfLists(props) {
       type: "UPDATE_ISSUE_DESCRIPTION",
       payload: {
         description: evt.currentTarget.value,
-        issueId: props.activeIssueId
+        issueId: activeIssueId
       }
     });
   }
@@ -57,7 +60,7 @@ export function ListOfLists(props) {
       type: "UPDATE_ISSUE_TITLE",
       payload: {
         title: evt.currentTarget.value,
-        issueId: props.activeIssueId
+        issueId: activeIssueId
       }
     });
   }

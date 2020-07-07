@@ -42,13 +42,15 @@ const SUGGESTIONS = [
   "💡Unrelated"
 ];
 
-export function QuickAddListSections(props) {
-  const [issues, dispatch] = useIssues();
+export function QuickAddListSections() {
+  const [issuesState, dispatch] = useIssues();
 
-  const activeIssue = issues.find(issue => issue.id === props.activeIssueId);
+  const activeIssue = issuesState?.issues?.find(
+    issue => issue.id === issuesState.activeIssueId
+  );
 
   const unusedSuggestions = suggestion => {
-    const activeIssueHasSection = activeIssue.groups.find(
+    const activeIssueHasSection = activeIssue?.groups?.find(
       section => section.title === suggestion
     );
     return !activeIssueHasSection;
@@ -66,7 +68,7 @@ export function QuickAddListSections(props) {
                   payload: {
                     title: sugg,
                     icon: "",
-                    issueId: props.activeIssueId
+                    issueId: issuesState.activeIssueId
                   }
                 });
               });
@@ -77,7 +79,7 @@ export function QuickAddListSections(props) {
               payload: {
                 title: suggestion,
                 icon: "",
-                issueId: props.activeIssueId
+                issueId: issuesState.activeIssueId
               }
             });
           }}
