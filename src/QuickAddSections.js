@@ -28,6 +28,7 @@ const QuickAddItem = styled.span({
   }
 });
 
+// @FIXME - turn into objects with {title, icon, ..}
 const SUGGESTIONS = [
   "➕All",
   "🔴Do Next",
