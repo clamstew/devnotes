@@ -106,7 +106,7 @@ function IssueTab(props) {
   );
 }
 
-export function IssueTabs(props) {
+export function IssueTabs() {
   const [issuesState, dispatch] = useIssues();
 
   return (
