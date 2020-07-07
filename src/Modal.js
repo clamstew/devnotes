@@ -23,12 +23,22 @@ const ModalBackground = styled.div(props => {
   return styles;
 });
 
+const FullScreenPortalFlexboxWrapper = styled.div({
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  right: 0,
+  left: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+});
+
 const ModalWrapper = styled.div({
   background: "black",
   opacity: 1,
   color: "white",
   height: 250,
-  position: "absolute",
   top: 200,
   left: 200,
   width: 300,
@@ -49,25 +59,27 @@ export const Modal = () => {
   return (
     <ModalBackground showBackdrop={true}>
       <GenericPortal>
-        {modals.showRemoveDataModal && (
-          <ModalWrapper>
-            <h1>
-              <span role="img" aria-label="fire">
-                🔥
-              </span>{" "}
-              Self-Destruct
-            </h1>
+        <FullScreenPortalFlexboxWrapper>
+          {modals.showRemoveDataModal && (
+            <ModalWrapper>
+              <h1>
+                <span role="img" aria-label="fire">
+                  🔥
+                </span>{" "}
+                Self-Destruct
+              </h1>
 
-            <p>
-              No need for GDPR laws here. We don't have any of your data. You
-              do! It's in localStorage.
-            </p>
+              <p>
+                No need for GDPR laws here. We don't have any of your data. You
+                do! It's in localStorage.
+              </p>
 
-            <p>If you'd like to delete it, and skip town, click below:</p>
+              <p>If you'd like to delete it, and skip town, click below:</p>
 
-            <DangerButton text={"Burn it down"} onClick={burnItDown} />
-          </ModalWrapper>
-        )}
+              <DangerButton text={"Burn it down"} onClick={burnItDown} />
+            </ModalWrapper>
+          )}
+        </FullScreenPortalFlexboxWrapper>
       </GenericPortal>
     </ModalBackground>
   );
