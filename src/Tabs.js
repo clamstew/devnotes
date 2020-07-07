@@ -51,7 +51,7 @@ const CloseIconStyled = styled(IoMdCloseCircleOutline)({
 });
 
 function IssueTab(props) {
-  const [, dispatch] = useIssues();
+  const [issuesState, dispatch] = useIssues();
   const [hoverRef, isHovered] = useHover();
 
   var length = 16;
@@ -65,7 +65,7 @@ function IssueTab(props) {
     evt.stopPropagation();
     dispatch({
       type: "REMOVE_ISSUE",
-      payload: { activeIssueId: props.activeIssueId }
+      payload: { activeIssueId: props.issueTabData.id }
     });
     // show warning that this is a destructive action
     // run reducer action to remove all of that tab and
@@ -76,8 +76,15 @@ function IssueTab(props) {
   return (
     <IssueTabWrapper
       ref={hoverRef}
-      isActive={props.issueTabData.id === props.activeIssueId}
-      onClick={() => props.setActiveIssueId(props.issueTabData.id)}
+      isActive={props.issueTabData.id === issuesState.activeIssueId}
+      onClick={() => {
+        return dispatch({
+          type: "SET_ACTIVE_ISSUE",
+          payload: {
+            activeIssueId: props.issueTabData.id
+          }
+        });
+      }}
     >
       {`${myTruncatedTitle}${useEllipses ? " ..." : ""}`}
       {myTruncatedTitle === "" ? "¯\\_(ツ)_/¯" : null}
@@ -99,25 +106,19 @@ function IssueTab(props) {
   );
 }
 
-export function IssueTabs(props) {
-  const [activeIssues, dispatch] = useIssues();
+export function IssueTabs() {
+  const [issuesState, dispatch] = useIssues();
 
   return (
     <TabsWrapper>
-      {activeIssues.map(issueTabData => (
-        <IssueTab
-          key={issueTabData.id}
-          issueTabData={issueTabData}
-          activeIssueId={props.activeIssueId}
-          setActiveIssueId={props.setActiveIssueId}
-        />
+      {issuesState?.issues?.map(issueTabData => (
+        <IssueTab key={issueTabData.id} issueTabData={issueTabData} />
       ))}
 
       <AddNewIssueButton
         onClick={() => {
+          // add an issue tab, and set as active
           dispatch({ type: "ADD_ISSUE" });
-          // need to set issue created here as active somehow
-          // maybe it highlights the nced to centralize more data in the reducer??
         }}
       >
         +

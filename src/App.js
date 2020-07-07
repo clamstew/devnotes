@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import { activeIssues } from "./sample-data";
 import { IssueTabs } from "./Tabs";
 import { ListOfLists } from "./List";
 import { Header } from "./Header";
@@ -19,26 +18,21 @@ const BodyWrapper = styled.div({
 });
 
 export default function App() {
-  const [activeIssueId, setActiveIssueId] = useState(activeIssues[0].id);
-
   return (
     <AppWrapper>
       <Modal />
       <Header />
 
       <BodyWrapper>
-        <IssueTabs
-          activeIssueId={activeIssueId}
-          setActiveIssueId={setActiveIssueId}
-        />
+        <IssueTabs />
 
         <br clear="all" />
 
-        <ListOfLists activeIssueId={activeIssueId} />
+        <ListOfLists />
 
         <br clear="all" />
 
-        <QuickAddListSections activeIssueId={activeIssueId} />
+        <QuickAddListSections />
       </BodyWrapper>
     </AppWrapper>
   );

@@ -37,7 +37,7 @@ const BurnDownAllTheDataIcon = styled(BsTrashFill)({
 export function Header() {
   const [modals, dispatch] = useModals();
   function launchConfirmRemoveDataModal() {
-    console.log("launch modal... to confirm destructive action here..");
+    // console.log("launch modal... to confirm destructive action here..");
     if (modals.showRemoveDataModal === false) {
       dispatch({ type: "SHOW_REMOVE_DATA_MODAL" });
     }

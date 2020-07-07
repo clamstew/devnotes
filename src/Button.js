@@ -57,3 +57,5 @@ export const SecondaryButton = props => (
 export const AlertButton = props => <Button {...props} type={"alert"} />;
 export const DangerButton = props => <Button {...props} type={"danger"} />;
 export const SuccessButton = props => <Button {...props} type={"success"} />;
+
+// @TODO - could also create a-href links from these buttons if needed
