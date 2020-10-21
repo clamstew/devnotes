@@ -6,6 +6,7 @@ import TextareaAutosize from "react-autosize-textarea";
 
 const EditModeTextArea = styled(TextareaAutosize)({
   background: "#2d2d2d",
+  fontFamily: "Arial, Helvetica, sans-serif",
   color: "white",
   resize: "none",
   border: "1px solid white",
@@ -56,7 +57,7 @@ export const EditableMarkdownArea = (props) => {
           setViewMarkdown(false);
         }}
       >
-        Click to add text
+        Click to add markdown text
       </NoContentPrompt>
     );
   }
