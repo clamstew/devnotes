@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useComponentVisible } from "./hooks/useComponentVisible";
 import ReactMarkdown from "react-markdown";
 import styled from "@emotion/styled";
@@ -33,14 +33,21 @@ const NoContentPrompt = styled.div({
   fontSize: 12
 });
 
-export const EditableMarkdownArea = props => {
+export const EditableMarkdownArea = (props) => {
   const {
     ref,
     isComponentVisible: viewMarkdownMode,
     // NOTE: opposite of View Markdown mode is "edit mode"
     setIsComponentVisible: setViewMarkdown
   } = useComponentVisible(true);
+
   const [markdown, setMarkdownValue] = useState(props.markdown);
+
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    return textareaRef?.current?.focus();
+  });
 
   if (viewMarkdownMode && markdown === undefined) {
     return (
@@ -69,11 +76,12 @@ export const EditableMarkdownArea = props => {
   return (
     <div ref={ref}>
       <EditModeTextArea
+        ref={textareaRef}
         value={markdown}
-        onChange={e => {
+        onChange={(e) => {
           return setMarkdownValue(e.target.value);
         }}
-        onBlur={e => {
+        onBlur={(e) => {
           return setViewMarkdown(true);
         }}
       />
