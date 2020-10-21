@@ -36,11 +36,11 @@ export function ListOfLists() {
   const [issuesState, dispatch] = useIssues();
   const activeIssueId = issuesState?.activeIssueId;
   const activeIssue = issuesState?.issues?.find(
-    issue => issue.id === activeIssueId
+    (issue) => issue.id === activeIssueId
   );
 
   const totalAmountOfGroups = activeIssue?.groups?.length;
-  const skipShowingFinalDividingLine = idx =>
+  const skipShowingFinalDividingLine = (idx) =>
     totalAmountOfGroups && totalAmountOfGroups === idx + 1;
 
   if (!activeIssue) return null;
@@ -93,7 +93,7 @@ export function ListOfLists() {
         return (
           <React.Fragment key={idx}>
             <h3 style={{ userSelect: "none" }}>
-              {group.icon} [{group.title}]
+              {group.icon}&nbsp;&nbsp;{group.title}
             </h3>
             <EditableMarkdownArea markdown={group.description} />
             {skipShowingFinalDividingLine(idx) || <hr />}
