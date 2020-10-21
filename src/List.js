@@ -89,6 +89,8 @@ export function ListOfLists() {
         </h4>
       )}
 
+      {activeIssue?.groups?.length > 0 ? <hr /> : null}
+
       {activeIssue?.groups?.map((group, idx) => {
         return (
           <React.Fragment key={idx}>
