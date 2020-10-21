@@ -9,7 +9,7 @@ const TabsWrapper = styled.div({
   margin: "0 10px"
 });
 
-const IssueTabWrapper = styled.div(props => {
+const IssueTabWrapper = styled.div((props) => {
   return {
     borderTop: "1px solid grey",
     background: props.isActive ? "#2d2d2d" : "#1b1b1b",
@@ -46,6 +46,8 @@ const AddNewIssueButton = styled.div({
 const CloseIconStyled = styled(IoMdCloseCircleOutline)({
   marginLeft: 5,
   marginTop: 2,
+  width: 14,
+  height: 14,
   display: "inline-block",
   cursor: "pointer"
 });
@@ -111,7 +113,7 @@ export function IssueTabs() {
 
   return (
     <TabsWrapper>
-      {issuesState?.issues?.map(issueTabData => (
+      {issuesState?.issues?.map((issueTabData) => (
         <IssueTab key={issueTabData.id} issueTabData={issueTabData} />
       ))}
 
