@@ -23,11 +23,11 @@ const MarkdownViewerWrapper = styled.div({
 });
 
 const NoContentPrompt = styled.div({
-  backgroundColor: "grey",
+  backgroundColor: "#3c3a3a",
   paddingTop: 6,
   paddingBottom: 6,
   borderRadius: 3,
-  color: "black",
+  color: "#909090",
   textAlign: "center",
   cursor: "pointer",
   fontWeight: "bold",
